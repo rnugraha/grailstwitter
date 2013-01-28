@@ -19,7 +19,7 @@ grails.project.dependency.resolution = {
         // uncomment the below to enable remote dependency resolution
         // from public Maven repositories
         //mavenLocal()
-        //mavenCentral()
+        mavenCentral()
         //mavenRepo "http://snapshots.repository.codehaus.org"
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
@@ -29,7 +29,8 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
         // runtime 'mysql:mysql-connector-java:5.1.5'
 
-        test 'org.codehaus.geb:geb-spock:0.7.0'
+        test 'org.codehaus.geb:geb-spock:0.7.2'
+        test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
         test("org.seleniumhq.selenium:selenium-htmlunit-driver:2.21.0") {
             exclude "xml-apis"
         }
@@ -41,11 +42,13 @@ grails.project.dependency.resolution = {
         compile ':activemq:0.1'
         compile ":hibernate:$grailsVersion"
         compile ':jms:1.0'
-        compile ':jquery:1.6.1.1'
-        compile ':searchable:0.6.3'
-        compile ':spring-security-core:1.2.4'
-        test ':geb:0.7.0'
-        test ':spock:0.6'
+        compile ':jquery:1.8.3'
+        compile ':searchable:0.6.4'
+        compile ':spring-security-core:1.2.7.3'
+        test ':geb:0.7.2'
+        test ':spock:0.7', {
+            exclude "spock-grails-support"
+        }
         compile ":cache:1.0.0.RC1"
         test ':functional-test:1.2.7'
     }
