@@ -6,6 +6,7 @@ class Status {
     String message
     Person author
     Date dateCreated
+	Boolean isPublic
 
     transient jmsService
     transient afterInsert = {

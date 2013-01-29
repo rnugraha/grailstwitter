@@ -5,8 +5,8 @@ class HomeController {
 	def timelineService
 
 	def index() {
-		// get all message list
-		def messages = Status.list()
+		// get all message list which are public
+		def messages = timelineService.getAllPublicTimeline()
 
 		// return as statusMessages
 		[statusMessages: messages]

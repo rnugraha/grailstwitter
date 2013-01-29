@@ -16,8 +16,15 @@ class StatusController {
         [statusMessages: messages]
     }
 
-    def updateStatus(String message) {
-        statusService.updateStatus message
+    def updateStatus(String message, String isPublic) {
+
+		// by default status is always true
+	    def isMsgPublic = true;
+
+	    // change to false if user select No
+	    if (isPublic == "N") isMsgPublic = false;
+
+        statusService.updateStatus(message, isMsgPublic)
         def messages = timelineService.getTimelineForUser(springSecurityService.principal.username)
         
         def content = twitter.renderMessages messages: messages

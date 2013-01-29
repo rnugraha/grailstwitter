@@ -18,6 +18,11 @@
         <g:formRemote url="[action: 'updateStatus']" update="messages" name="updateStatusForm"
                       onSuccess="document.updateStatusForm.message.value='';">
             <g:textArea name="message" value=""/><br/>
+	        <div>
+		        Show to public:
+		        <input type="radio" name="isPublic" value="Y" checked="checked" /> Yes
+		        <input type="radio" name="isPublic" value="N" /> No
+	        </div>
             <g:submitButton name="Update Status" id="update_status_button"/>
         </g:formRemote>
     </div>

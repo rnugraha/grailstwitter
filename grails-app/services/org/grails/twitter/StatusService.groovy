@@ -22,8 +22,9 @@ class StatusService {
         }
     }
 
-    void updateStatus(String message) {
-        def status = new Status(message: message)
+    void updateStatus(String message, Boolean isPublic) {
+	    // update status with it's attribute
+        def status = new Status(message: message, isPublic: isPublic)
         status.author = lookupCurrentPerson()
         status.save()
         timelineService.clearTimelineCacheForUser(status.author.username)

@@ -22,4 +22,13 @@ class TimelineService {
         def messages = query.list(max: 10)
         messages
     }
+
+	// display all status which are public
+	def getAllPublicTimeline() {
+		def query = Status.where {
+			isPublic == true
+		}.order 'dateCreated', 'desc'
+		def messages = query.list()
+		messages
+	}
 }
