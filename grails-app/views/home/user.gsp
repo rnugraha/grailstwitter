@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-	<meta name="layout" content="main"/>
+	<meta name="layout" content="main-bootstrap"/>
 	<title>${realName}'s Tweets</title>
 	<g:javascript library="jquery" plugin="jquery" />
 </head>
@@ -17,10 +17,14 @@
 <h1>${realName}'s Tweets</h1>
 <g:each in="${statusMessages}" status="i" var="messages">
 	<div class="statusMessage" id="message_${messageCounter}">
-
-		<strong><span class="author">${messages.author.realName}</span> said</strong>
-		<span class="statusMessage">${messages.message}</span><br/>
-		<div class="statusMessageTime">at <g:formatDate date="${messages.dateCreated}"/></div>
+		<strong>
+			<span class="author">
+				${messages.author.realName}
+			</span>
+		</strong>
+		<span>@${messages.author.username}</span>
+		<div>${messages.message}</div>
+		<div class="statusMessageTime"><prettytime:display date="${messages.dateCreated}" /></div>
 	</div>
 </g:each>
 

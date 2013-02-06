@@ -10,6 +10,7 @@ import org.springframework.security.authentication.LockedException
 import org.springframework.security.core.context.SecurityContextHolder as SCH
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import org.springframework.security.authentication.BadCredentialsException
 
 @Secured('IS_AUTHENTICATED_ANONYMOUSLY')
 class LoginController {
@@ -83,6 +84,7 @@ class LoginController {
 		def username = session[UsernamePasswordAuthenticationFilter.SPRING_SECURITY_LAST_USERNAME_KEY]
 		String msg = ''
 		def exception = session[AbstractAuthenticationProcessingFilter.SPRING_SECURITY_LAST_EXCEPTION_KEY]
+		println("exception is ..." + exception.toString())
 		if (exception) {
 			if (exception instanceof AccountExpiredException) {
 				msg = SpringSecurityUtils.securityConfig.errors.login.expired
@@ -96,6 +98,9 @@ class LoginController {
 			else if (exception instanceof LockedException) {
 				msg = SpringSecurityUtils.securityConfig.errors.login.locked
 			}
+			else if (exception instanceof BadCredentialsException) {
+				msg = "Bad Credentials"
+			}
 			else {
 				msg = SpringSecurityUtils.securityConfig.errors.login.fail
 			}
@@ -106,6 +111,7 @@ class LoginController {
 		}
 		else {
 			flash.message = msg
+			println("flash message is ..." + flash.message)
 			redirect action: auth, params: params
 		}
 	}

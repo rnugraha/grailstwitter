@@ -1,32 +1,19 @@
 <html>
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="main-bootstrap"/>
     <title>What Are You Doing?</title>
     <g:javascript library="jquery" plugin="jquery" />
+    <g:javascript src="bootstrap.js" />
 </head>
 <body>
-    <h1>Search For People To Follow</h1>
-    <div class="searchForm">
+    <div class="searchForm form-inline">
         <g:form controller="searchable" name="userSearchForm">
-            <g:textField name="q" value=""/>
-            <g:submitButton name="Search For Users" id="search_for_users_button"/>
+            <g:textField name="q" value="" placeholder="Type username to follow .."/>
+            <g:submitButton name="Search For Users" id="search_for_users_button" class="btn"/>
         </g:form>
     </div>
-
-    <h1>What Are You Doing?</h1>
-    <div class="updatStatusForm">
-        <g:formRemote url="[action: 'updateStatus']" update="messages" name="updateStatusForm"
-                      onSuccess="document.updateStatusForm.message.value='';">
-            <g:textArea name="message" value=""/><br/>
-	        <div>
-		        Show to public:
-		        <input type="radio" name="isPublic" value="Y" checked="checked" /> Yes
-		        <input type="radio" name="isPublic" value="N" /> No
-	        </div>
-            <g:submitButton name="Update Status" id="update_status_button"/>
-        </g:formRemote>
-    </div>
     <div id="messages">
+	    <h3>My Tweets</h3>
         <twitter:renderMessages messages="${statusMessages}"/>
     </div>
 </body>

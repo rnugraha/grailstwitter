@@ -1,5 +1,5 @@
 <head>
-<meta name='layout' content='main' />
+<meta name='layout' content='main-login' />
 <title>Login</title>
 <style type='text/css' media='screen'>
 #login {
@@ -43,35 +43,34 @@
 </head>
 
 <body>
-	<div id='login'>
-		<div class='inner'>
-			<g:if test='${flash.message}'>
-			<div class='login_message'>${flash.message}</div>
-			</g:if>
-			<div class='fheader'>Please Login..</div>
-			<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
-				<p>
-					<label for='username'>Login ID</label>
-					<input type='text' class='text_' name='j_username' id='username' />
-				</p>
-				<p>
-					<label for='password'>Password</label>
-					<input type='password' class='text_' name='j_password' id='password' />
-				</p>
-				<p>
-					<label for='remember_me'>Remember me</label>
-					<input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me'
-					<g:if test='${hasCookie}'>checked='checked'</g:if> />
-				</p>
-				<p>
-					<input type='submit' value='Login' id="login_button" />
-				</p>
-			</form>
-			<p>
-			    (Valid user names are graeme, jeff, peter and burt. Password is password.)
-			</p>
+	<g:if test='${flash.message}'>
+		<div class='login_message alert alert-error'>
+			<a href="auth" class="close" data-dismiss="alert">&times;</a>
+			${flash.message}
 		</div>
-	</div>
+	</g:if>
+	<form action='${postUrl}' method='POST' id='loginForm' autocomplete='off'>
+		<p>
+			<label for='username'>Login ID</label>
+			<input type='text' name='j_username' id='username' />
+		</p>
+		<p>
+			<label for='password'>Password</label>
+			<input type='password' name='j_password' id='password' />
+		</p>
+		<p>
+			<label for='remember_me' class="checkbox">Remember me
+				<input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me'
+				<g:if test='${hasCookie}'>checked='checked'</g:if> />
+			</label>
+		</p>
+		<p>
+			<input type='submit' value='Login' id="login_button" class="btn"/>
+		</p>
+	</form>
+	<p class="smaller-font">
+	    (Valid user names are graeme, jeff, peter and burt. Password is password.)
+	</p>
 <script type='text/javascript'>
 <!--
 (function(){

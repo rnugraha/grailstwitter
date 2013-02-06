@@ -1,12 +1,72 @@
+input[type='text'],input[type='password'] {
+	height: 30px;
+}
+
+input[type='textarea'] {
+	height: 100px;
+}
+
 .pageBody {
     padding: 50px 50px 50px 250px;
 }
 
+.rounded-corners {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;
+}
+
 .statusMessage {
-    padding: 10px;
-    width: 300px;
+	border-bottom: 1px dashed #d4d4d4;
+	padding-top: 15px;
+	padding-bottom: 5px;
 }
 
 .statusMessageTime {
     color: grey;
+}
+
+.light-blue-container {
+	background-color: #c4e3f3;
+	padding: 1em;
+	color: #666;
+	border: 1px solid 	#d4d4d4;
+}
+
+.light-border-container {
+	padding: 1em;
+	color: #666;
+	border: 1px solid 	#d4d4d4;
+}
+
+#push {height: 60px;}
+#footer {
+	padding: 1.2em;
+	vertical-align: middle;
+	text-align:center;
+	background-color: #c4e3f3;
+	font-size: .85em;
+	color: #999;
+}
+
+.updatStatusForm {
+	margin-top: 20px;
+}
+
+#compose-tweet-btn, #update_status_button, .follow-btn {
+	float: right;
+}
+
+#message-txtarea {
+	width: 100%;
+}
+
+.content-center {
+	width: 50%;
+	margin: 0px auto;
+}
+
+.smaller-font {
+	font-size: .85em;
 }

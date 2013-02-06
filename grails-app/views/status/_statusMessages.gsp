@@ -1,5 +1,10 @@
 <div class="statusMessage" id="message_${messageCounter}">
-    <strong><span class="author">${statusMessage.author.realName}</span> said</strong>
-    <span class="statusMessage">${statusMessage.message}</span><br/>
-    <div class="statusMessageTime">at <g:formatDate date="${statusMessage.dateCreated}"/></div>
+	<strong>
+		<span class="author">
+			${statusMessage.author.realName}
+		</span>
+	</strong>
+	<span>@${statusMessage.author.username}</span>
+	<div>${statusMessage.message}</div>
+	<div class="statusMessageTime"><prettytime:display date="${statusMessage.dateCreated}" /></div>
 </div>
